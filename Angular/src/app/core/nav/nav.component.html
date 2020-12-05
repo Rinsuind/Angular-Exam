@@ -1,0 +1,45 @@
+<header class="site-header">
+    <section>
+        <h1>SoftUni Car Dealership</h1>
+        <h5>Buying a new or used vehicle is a big decision</h5>
+    </section>
+    <div>
+        <ul>
+            <ng-container
+                *ngIf="token; then isLoggedIn; else isNot"
+            ></ng-container>
+        </ul>
+    </div>
+    <nav *ngIf="token">
+        <ul>
+            <li><a routerLink="/">Home</a></li>
+            <li><a routerLink="/car/main">Cars</a></li>
+            <li><a routerLink="/car/create">Create an Offer</a></li>
+        </ul>
+    </nav>
+</header>
+
+<ng-template #isLoggedIn>
+    <li>
+        <a class="alone" href=""><i class="fas fa-cart-arrow-down"></i></a>
+    </li>
+    <li>
+        <a routerLink="/user/profile"
+            >{{ username }} <i class="fas fa-user-circle"></i
+        ></a>
+    </li>
+    <li>
+        <a (click)="logout()"> Logout <i class="fas fa-sign-out-alt"></i> </a>
+    </li>
+</ng-template>
+
+<ng-template #isNot>
+    <li><a routerLink="/">Home</a></li>
+    <li>
+        <a routerLink="/user/login">Login<i class="fas fa-sign-in-alt"></i></a>
+    </li>
+    <li>
+        <a routerLink="/user/register">Register</a>
+    </li>
+    <li></li
+></ng-template>

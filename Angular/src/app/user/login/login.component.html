@@ -1,0 +1,39 @@
+<div class="box">
+    <h2>Sign In</h2>
+    <form [formGroup]="form" (ngSubmit)="submitForm()">
+        <div class="inputBox">
+            <i class="fas fa-envelope-square"></i>
+            <input
+                formControlName="email"
+                type="text"
+                name="email"
+                id="email"
+                placeholder="Email"
+            />
+        </div>
+        <p *ngIf="form.get('email').touched && form.get('email').errors?.email">
+            Invalid Email
+        </p>
+        <div class="inputBox">
+            <i class="fas fa-key"></i>
+            <input
+                formControlName="password"
+                type="password"
+                name="password"
+                placeholder="Password"
+            />
+        </div>
+        <p
+            *ngIf="
+                form.get('password').touched &&
+                form.get('password').errors?.minlength
+            "
+        >
+            Password must be at least six characters!
+        </p>
+
+        <div class="inputBox">
+            <button>Submit</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,23 @@
+{
+    "server":{
+        "PORT":3000,
+        "cors":{
+            "urls":[
+                "http://localhost:4200"
+            ],
+            "credentials":true,
+            "exposedHeaders": []
+        }
+    },
+    "database":{
+        "connectionString":"mongodb://127.0.0.1:27017/",
+        "databaseName":"cars"
+    },
+    "cookies":{
+        "cookieName":"x-l7540YR",
+        "secret":"Get to the chopra"
+    },
+    "bcrypt":{
+        "rounds":10
+    }
+}

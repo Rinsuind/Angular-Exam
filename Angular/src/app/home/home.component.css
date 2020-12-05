@@ -1,0 +1,70 @@
+main {
+    margin: 3em;
+    flex-basis: 100%;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.gallery:after {
+    display: block;
+    content: "";
+}
+
+li,
+.media,
+img {
+    display: block;
+}
+
+.gallery:after,
+li {
+    flex: 0 0 27%;
+    overflow: hidden;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid white;
+}
+
+.media {
+    position: relative;
+    overflow: hidden;
+}
+
+.media:before {
+    display: block;
+    content: "";
+    padding-top: 100%;
+}
+
+h5 {
+    padding-bottom: 0;
+}
+
+h6 {
+    padding-bottom: 0;
+}
+.buttons {
+    margin-bottom: 5em;
+}
+
+a {
+    text-decoration: none;
+    color: antiquewhite;
+    margin-left: 0.5em;
+    font-size: 5em;
+}
+
+.detail {
+    color: rebeccapurple;
+    margin-left: 2em;
+}

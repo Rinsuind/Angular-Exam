@@ -1,0 +1,75 @@
+<div class="box">
+    <h2>Sign Up</h2>
+    <form [formGroup]="form" (ngSubmit)="submitHandler()">
+        <div class="inputBox">
+            <i class="fas fa-envelope-square"></i>
+            <input
+                formControlName="email"
+                type="text"
+                name="email"
+                id="email"
+                placeholder="Email"
+            />
+        </div>
+        <p *ngIf="form.get('email').touched && form.get('email').errors?.email">
+            Invalid Email!
+        </p>
+
+        <div class="inputBox">
+            <i class="fas fa-users"></i>
+            <input
+                formControlName="username"
+                type="text"
+                name="username"
+                placeholder="Username"
+            />
+        </div>
+        <p
+            *ngIf="
+                form.get('username').touched &&
+                form.get('username').errors?.minlength
+            "
+        >
+            Username Must be at least two characters!
+        </p>
+
+        <div class="inputBox">
+            <i class="fas fa-key"></i>
+            <input
+                formControlName="password"
+                type="password"
+                name="password"
+                placeholder="Password"
+            />
+        </div>
+        <p
+            *ngIf="
+                form.get('password').touched &&
+                form.get('password').errors?.minlength
+            "
+        >
+            Password must be at least six characters!
+        </p>
+
+        <div class="inputBox">
+            <i class="fas fa-unlock-alt"></i>
+            <input
+                formControlName="rePassword"
+                type="password"
+                name="rePassword"
+                placeholder="Repeat Password"
+            />
+            <p
+                *ngIf="
+                    form.get('rePassword').touched &&
+                    form.get('rePassword').errors?.rePasswordValidator
+                "
+            >
+                Passwords Do Not Match!
+            </p>
+        </div>
+        <div class="inputBox">
+            <button [disabled]="form.invalid">Submit</button>
+        </div>
+    </form>
+</div>

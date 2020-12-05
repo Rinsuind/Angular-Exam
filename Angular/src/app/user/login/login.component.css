@@ -1,0 +1,67 @@
+.box {
+    text-align: center;
+}
+h2 {
+    padding-top: 0.5em;
+    padding-bottom: 1.5em;
+}
+
+.inputBox {
+    position: relative;
+
+    margin-top: 2em;
+}
+label {
+    font-size: 1.5;
+    font-weight: bold;
+}
+
+input {
+    width: 20%;
+    outline: none;
+    border: none;
+    background: transparent;
+    border-bottom: 2px solid white;
+
+    color: white;
+    font-size: 1.1em;
+}
+
+button {
+    border: none;
+    margin-top: 2em;
+    width: 15%;
+    padding: 0.7em;
+    cursor: pointer;
+    border-radius: 1em;
+    background-color: white;
+    color: black;
+
+    font-size: 1.1em;
+    transition: all 0.5s ease-in;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: rgb(21, 25, 29);
+    color: white;
+}
+
+i {
+    font-size: 1.2em;
+    margin-right: 0.5em;
+}
+
+::-webkit-input-placeholder {
+    color: rgb(96, 97, 99);
+    font-weight: bold;
+}
+input:-webkit-autofill {
+    -webkit-text-fill-color: white;
+    -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+}
+p {
+    color: rgb(105, 36, 36);
+    margin-top: 0.3em;
+    font-weight: bold;
+}
