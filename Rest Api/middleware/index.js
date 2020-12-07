@@ -8,4 +8,5 @@ const {
 module.exports = {
     user: require('./user')(userModel, jwt, cookieName, formValidator, blackListedTokenModel),
     car: require('./car')(carModel, formValidator),
+    home: require('./home')(carModel),
 };

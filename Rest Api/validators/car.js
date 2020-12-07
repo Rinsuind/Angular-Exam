@@ -1,7 +1,7 @@
 module.exports = function (body) {
     return [
         body('brand').custom((x) => {
-            const pattern = /^[a-zA-Z]{2,25}$/gm;
+            const pattern = /^[a-zA-Z\s]{2,25}$/gm;
             if (x.length < 1) {
                 return Promise.reject('Brand Field Can Not Be Empty!');
             }
