@@ -1,11 +1,12 @@
 const { isAuth } = require('../utils');
+const { carValidator } = require('../validators');
+const { car } = require('../middleware');
 
 module.exports = {
     path: '/car',
     config: (router) => {
-        router.route('/create').get(isAuth(), (req, res, next) => {
-            return Promise.resolve(res.status(200).json({ message: 'Valid Auth' }));
-        });
+        router.route('/create').post(isAuth(), carValidator, car.createCar);
+
         return router;
     },
 };

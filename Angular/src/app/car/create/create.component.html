@@ -1,43 +1,63 @@
 <main>
     <h3>Create An Offer</h3>
-    <div class="main">
-        <form>
-            <p>
-                <input type="text" name="brand" />
-                <span>Brand</span>
-            </p>
-            <p>
-                <label for="model">Model</label>
-                <input type="text" name="model" />
-            </p>
-            <p>
-                <label for="year">Year</label>
-                <input type="number" name="year" />
-            </p>
-            <p>
-                <label for="engine">Engine</label>
-                <input type="text" name="engine" />
-            </p>
-            <p>
-                <label for="enginePower">Engine Power</label>
-                <input type="number" name="enginePower" />
-            </p>
-            <p>
-                <label for="engineCapacity">Engine Capacity</label>
-                <input type="number" name="engineCapacity" />
-            </p>
-            <p>
-                <label for="transition">Transition</label>
-                <input type="text" name=" transition" />
-            </p>
-            <p>
-                <label for="imageUrl"> ImageUrl </label>
-                <input type="text" name="imageUrl" />
-            </p>
-            <p>
-                <label for="description">Description</label>
-                <input type="text" name="description" />
-            </p>
-        </form>
-    </div>
+    <section>
+        <div class="container">
+            <form [formGroup]="form" (ngSubmit)="submitForm()">
+                <div class="shared">
+                    <label for="brand">Brand</label>
+                    <input type="text" formControlName="brand" />
+                </div>
+
+                <div class="shared">
+                    <label for="model">Model</label>
+                    <input type="text" formControlName="model" />
+                </div>
+
+                <div class="shared">
+                    <label for="year">Year</label>
+                    <input type="number" formControlName="year" />
+                </div>
+
+                <div class="shared">
+                    <label for="engine">Engine</label>
+                    <input type="text" formControlName="engine" />
+                </div>
+
+                <div class="shared">
+                    <label for="enginePower">Engine Power</label>
+                    <input type="number" formControlName="enginePower" />
+                </div>
+
+                <div class="shared">
+                    <label for="engineCapacity">Engine Capacity</label>
+                    <input type="number" formControlName="engineCapacity" />
+                </div>
+
+                <div class="shared">
+                    <label for="transmission">Transition</label>
+                    <input type="text" formControlName="transmission" />
+                </div>
+
+                <div class="shared">
+                    <label for="imageUrl">Image Url</label>
+                    <input type="text" formControlName="imageUrl" />
+                </div>
+
+                <div class="shared">
+                    <label for="price:">Price</label>
+                    <input type="number" formControlName="price" />
+                </div>
+
+                <div class="shared">
+                    <label for="description">Description</label>
+                    <textarea
+                        formControlName="description"
+                        cols="20"
+                        rows="5"
+                    ></textarea>
+                </div>
+                <button>Submit</button>
+            </form>
+        </div>
+    </section>
 </main>

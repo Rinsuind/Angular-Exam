@@ -11,7 +11,7 @@
     },
     "database":{
         "connectionString":"mongodb://127.0.0.1:27017/",
-        "databaseName":"cars"
+        "databaseName":"carShop"
     },
     "cookies":{
         "cookieName":"x-l7540YR",

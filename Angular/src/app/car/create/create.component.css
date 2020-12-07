@@ -1,10 +1,67 @@
 main {
-    margin: 6em;
+    margin: 3em;
 }
 h3 {
     text-align: center;
 }
 
-.main {
-    display: inline-block;
+section {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    margin: 0 auto;
+
+    padding: 2em;
+}
+label {
+    font-size: 1.5em;
+}
+
+.shared {
+    width: 100%;
+    margin-top: 0.7em;
+}
+input,
+textarea {
+    padding: 0.3em;
+    width: 100%;
+    margin-top: 0.7em;
+    outline: none;
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    font-size: 1.1em;
+    border-radius: 10px;
+}
+input:-webkit-autofill {
+    -webkit-text-fill-color: white;
+    -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+}
+button {
+    border: none;
+    margin-top: 2em;
+    width: 100%;
+    padding: 0.7em;
+    cursor: pointer;
+    border-radius: 1em;
+    background-color: white;
+    color: black;
+    font-size: 1.1em;
+    transition: all 0.5s ease-in;
+    font-weight: bold;
+}
+button:hover {
+    background-color: rgb(21, 25, 29);
+    color: white;
+}
+
+p {
+    margin-top: 0.8em;
+    margin-bottom: 1.2em;
+    text-align: center;
 }
