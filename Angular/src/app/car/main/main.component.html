@@ -1,12 +1,16 @@
 <main>
+    <ng-container *ngIf="cars; then isNotEmpty; else isEmpty"> </ng-container>
+</main>
+
+<ng-template #isEmpty>
+    <h1>There is not any offers yet. Be the first one to create one!</h1>
+</ng-template>
+<ng-template #isNotEmpty>
     <ul class="gallery">
-        <li>
-            <h5>Bwm/somifkdmgkdfg</h5>
+        <li *ngFor="let car of cars">
+            <h5>{{ car.brand }} - {{ car.model }}</h5>
             <span class="media">
-                <img
-                    src="https://images.unsplash.com/photo-1452555099503-3985696e7c0a?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=400&q=80"
-                    alt=""
-                />
+                <img src="{{ car.imageUrl }}" alt="" />
             </span>
             <div class="buttons">
                 <a href=""
@@ -16,8 +20,10 @@
                     ><i class="fas fa-thumbs-down"></i>
                     <span>0 dislikes</span></a
                 >
-                <a class="details" routerLink="/car/detail/1">Details</a>
+                <a class="details" [routerLink]="['/car/detail', car._id]"
+                    >Details</a
+                >
             </div>
         </li>
     </ul>
-</main>
+</ng-template>

@@ -25,7 +25,7 @@ export class CreateComponent implements OnInit {
             transmission: ['', [Validators.required]],
             imageUrl: ['', [Validators.required]],
             price: ['', [Validators.required]],
-            description: ['', [Validators.required]],
+            description: [''],
         });
     }
 

@@ -27,7 +27,8 @@ label {
     margin-top: 0.7em;
 }
 input,
-textarea {
+textarea,
+select {
     padding: 0.3em;
     width: 100%;
     margin-top: 0.7em;
@@ -37,6 +38,9 @@ textarea {
     color: white;
     font-size: 1.1em;
     border-radius: 10px;
+}
+select option {
+    background-color: black;
 }
 input:-webkit-autofill {
     -webkit-text-fill-color: white;

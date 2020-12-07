@@ -1,7 +1,9 @@
+const { isAuth } = require('../utils');
+
 module.exports = {
     path: '/',
     config: (router) => {
-        router.get('/', (req, res) => res.json({ name: 'Ivan' }));
+        router.route('/').get(isAuth(true));
         return router;
     },
 };

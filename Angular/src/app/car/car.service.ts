@@ -9,4 +9,8 @@ export class CarService {
     createNewOffer(data: any): Observable<any> {
         return this.http.post('car/create', data);
     }
+
+    getAllCars(): Observable<any> {
+        return this.http.get('car/main');
+    }
 }

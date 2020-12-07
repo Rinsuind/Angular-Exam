@@ -62,6 +62,12 @@ module.exports = function (body) {
             }
             return true;
         }),
+        body('imageUrl').custom((x) => {
+            if (!x.startsWith('http') && !x.startsWith('https')) {
+                return Promise.reject('Invalid Image URL');
+            }
+            return true;
+        }),
         body('price').custom((x) => {
             if (isNaN(x)) {
                 return Promise.reject('Price Must be a Number');
