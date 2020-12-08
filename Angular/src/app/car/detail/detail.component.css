@@ -1,9 +1,10 @@
 main {
     margin: 5em;
 }
-h3 {
+h6 {
     text-align: center;
 }
+
 .container {
     display: flex;
     justify-content: center;
@@ -68,7 +69,7 @@ li {
 
 .buttons {
     text-align: right;
-    margin-right: 10em;
+    margin-right: 7em;
 }
 .desk {
     margin-left: 20em;
@@ -81,4 +82,26 @@ li {
 }
 .desk:hover {
     opacity: 100%;
+}
+
+a {
+    display: inline-block;
+    text-align: center;
+    width: 15%;
+    margin-top: 0.7em;
+    margin-right: 0.5em;
+    padding: 0.5em 1em;
+    background-color: rgb(21, 25, 29);
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid rgb(21, 25, 29);
+    font-weight: bold;
+    text-transform: capitalize;
+    border-radius: 1em;
+    transition: all 0.5s ease-in;
+}
+a:hover {
+    color: black;
+    background-color: white;
 }

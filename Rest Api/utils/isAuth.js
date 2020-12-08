@@ -22,7 +22,6 @@ module.exports = function (jwt, cookieName, userModel, blackListedModel) {
                     })
                     .catch((err) => {
                         if (['token expired', 'blacklisted token', 'jwt must be provided'].includes(err.message)) {
-                            console.log(err.message);
                             return res.status(400).json({ message: 'Invalid Token!!!' });
                         }
                         next(err);

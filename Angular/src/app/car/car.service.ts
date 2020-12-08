@@ -13,4 +13,12 @@ export class CarService {
     getAllCars(): Observable<any> {
         return this.http.get('car/main');
     }
+
+    getCarDetails(key: string): Observable<any> {
+        return this.http.get(`car/detail/${key}`);
+    }
+
+    updateCar(id: string, data: any): Observable<any> {
+        return this.http.patch(`car/edit/${id}`, data);
+    }
 }

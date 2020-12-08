@@ -7,6 +7,7 @@ import { MainComponent } from './main/main.component';
 import { MyOffersComponent } from './my-offers/my-offers.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CarService } from './car.service';
+import { EditComponent } from './edit/edit.component';
 
 @NgModule({
     declarations: [
@@ -14,6 +15,7 @@ import { CarService } from './car.service';
         DetailComponent,
         MainComponent,
         MyOffersComponent,
+        EditComponent,
     ],
     imports: [CommonModule, CarRouterModule, ReactiveFormsModule],
     providers: [CarService],

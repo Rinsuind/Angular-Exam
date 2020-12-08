@@ -1,0 +1,72 @@
+<main>
+    <h3>Edit An Offer</h3>
+    <section>
+        <div class="container">
+            <form [formGroup]="form" (ngSubmit)="submitForm()">
+                <div class="shared">
+                    <label for="brand">Brand</label>
+                    <input type="text" formControlName="brand" />
+                </div>
+
+                <div class="shared">
+                    <label for="model">Model</label>
+                    <input type="text" formControlName="model" />
+                </div>
+
+                <div class="shared">
+                    <label for="year">Year</label>
+                    <input type="number" formControlName="year" />
+                </div>
+
+                <div class="shared">
+                    <label for="engine">Engine</label>
+                    <select formControlName="engine">
+                        <option>Petrol</option>
+                        <option>Hybrid</option>
+                        <option>Diesel</option>
+                        <option>Electric</option>
+                    </select>
+                </div>
+
+                <div class="shared">
+                    <label for="enginePower">Engine Power</label>
+                    <input type="number" formControlName="enginePower" />
+                </div>
+
+                <div class="shared">
+                    <label for="engineCapacity">Engine Capacity</label>
+                    <input type="number" formControlName="engineCapacity" />
+                </div>
+
+                <div class="shared">
+                    <label for="transmission">Transmission</label>
+                    <select formControlName="transmission">
+                        <option>Automatic</option>
+                        <option>Manual</option>
+                        <option>Semi-Automatic</option>
+                    </select>
+                </div>
+
+                <div class="shared">
+                    <label for="imageUrl">Image Url</label>
+                    <input type="text" formControlName="imageUrl" />
+                </div>
+
+                <div class="shared">
+                    <label for="price:">Price</label>
+                    <input type="number" formControlName="price" />
+                </div>
+
+                <div class="shared">
+                    <label for="description">Description</label>
+                    <textarea
+                        formControlName="description"
+                        cols="20"
+                        rows="5"
+                    ></textarea>
+                </div>
+                <button>Submit</button>
+            </form>
+        </div>
+    </section>
+</main>
