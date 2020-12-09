@@ -6,7 +6,7 @@ const {
 } = require('../config');
 
 module.exports = {
-    user: require('./user')(userModel, jwt, cookieName, formValidator, blackListedTokenModel),
+    user: require('./user')(userModel, jwt, cookieName, formValidator, blackListedTokenModel, carModel),
     car: require('./car')(carModel, formValidator),
     home: require('./home')(carModel),
 };

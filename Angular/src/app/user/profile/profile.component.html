@@ -1,1 +1,25 @@
-<p>profile works!</p>
+<main>
+    <div class="profile">
+        <div class="image">
+            <img
+                src="../../../assets/user-icon.png"
+                style="width: 40%"
+                alt=""
+            />
+        </div>
+        <div class="flex">
+            <div class="main">
+                <p>Email:</p>
+                <p>Username:</p>
+                <p>Offers Bought:</p>
+                <p>Active Offers:</p>
+            </div>
+            <div class="content" *ngIf="data">
+                <p>{{ data.email }}</p>
+                <p>{{ data.username }}</p>
+                <p>{{ data.carsBought.length }}</p>
+                <p>{{ data.cars.length }}</p>
+            </div>
+        </div>
+    </div>
+</main>

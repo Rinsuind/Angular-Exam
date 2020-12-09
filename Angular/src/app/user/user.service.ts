@@ -16,4 +16,7 @@ export class UserService {
     logout(): Observable<any> {
         return this.http.get('user/logout');
     }
+    profile(): Observable<any> {
+        return this.http.get('user/profile');
+    }
 }

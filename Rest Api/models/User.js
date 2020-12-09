@@ -1,33 +1,32 @@
 module.exports = function (mongoose, bcrypt, rounds) {
-    const userSchema = new mongoose.Schema({
-        email: {
-            type: String,
-            required: true,
-            unique: true,
-        },
-        username: {
-            type: String,
-            required: true,
-        },
-        password: {
-            type: String,
-            required: true,
-        },
-        createdAt: {
-            type: Date || String,
-            required: true,
-        },
-        userAddress: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'address',
-        },
-        carsBought: [
-            {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'car',
+    const userSchema = new mongoose.Schema(
+        {
+            email: {
+                type: String,
+                required: true,
+                unique: true,
             },
-        ],
-    });
+            username: {
+                type: String,
+                required: true,
+            },
+            password: {
+                type: String,
+                required: true,
+            },
+            userAddress: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'address',
+            },
+            carsBought: [
+                {
+                    type: mongoose.Schema.Types.ObjectId,
+                    ref: 'car',
+                },
+            ],
+        },
+        { timestamps: { createdAt: 'created_at' } }
+    );
 
     userSchema.methods = {
         passwordMatch(password) {

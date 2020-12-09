@@ -1,7 +1,7 @@
 <main>
     <div class="container">
         <div class="media">
-            <span class="item">
+            <span class="item" *ngIf="car">
                 <img src="{{ car.imageUrl }}" />
             </span>
         </div>
@@ -16,7 +16,7 @@
                 <li>Transmission</li>
                 <li>Price</li>
             </ul>
-            <ul class="dynamic">
+            <ul class="dynamic" *ngIf="car">
                 <li>{{ car.brand }}</li>
                 <li>{{ car.model }}</li>
                 <li>{{ car.year }}</li>
@@ -34,7 +34,7 @@
     </div>
     <div class="last">
         <h6>Description</h6>
-        <div class="desk">
+        <div class="desk" *ngIf="car">
             {{ car.description }}
         </div>
     </div>

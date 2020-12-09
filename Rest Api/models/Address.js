@@ -1,15 +1,16 @@
 module.exports = function (mongoose) {
     const addressSchema = new mongoose.Schema({
-        fullName: {
+        firstName: {
             type: String,
             required: true,
         },
-        addressOne: {
+        lastName: {
             type: String,
             required: true,
         },
-        addersTwo: {
+        street: {
             type: String,
+            required: true,
         },
         zip: {
             type: Number,

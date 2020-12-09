@@ -1,0 +1,32 @@
+main {
+    display: flex;
+    justify-content: center;
+    padding-top: 4em;
+}
+.profile {
+    text-align: center;
+    width: 400px;
+    background-color: rgba(rgb(8, 8, 51));
+    box-shadow: 10px 10px 15px 15px rgba(30, 64, 126, 0.5);
+    font-size: 1.4em;
+    padding: 0.7em;
+}
+.image {
+    position: relative;
+    padding-bottom: 1.5em;
+}
+.flex {
+    display: flex;
+    justify-content: center;
+}
+p {
+    display: block;
+}
+.main {
+    margin-right: 0.7em;
+    text-align: left;
+}
+.content {
+    text-align: left;
+    font-weight: bold;
+}

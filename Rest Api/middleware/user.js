@@ -1,4 +1,4 @@
-module.exports = function (userModel, jwt, cookieName, formValidator, blackListTokenModel) {
+module.exports = function (userModel, jwt, cookieName, formValidator, blackListTokenModel, carModel) {
     function login(req, res, next) {
         const { email, password } = req.body;
 
@@ -23,14 +23,22 @@ module.exports = function (userModel, jwt, cookieName, formValidator, blackListT
         });
     }
     function register(req, res, next) {
-        const createdAt = new Date();
         const err = formValidator(req);
         if (err) {
             return res.status(400).json(err);
         }
+
         return userModel
-            .create({ ...req.body, createdAt })
-            .then((_) => res.status(201).json({ message: 'User has been created successfully.' }))
+            .findOne({ email: req.body.email })
+            .then((user) => {
+                if (user) {
+                    return res.status(400).json({ message: `The email ${user.email} is already in the system!` });
+                }
+                return userModel
+                    .create({ ...req.body })
+                    .then((_) => res.status(201).json({ message: 'User has been created successfully.' }))
+                    .catch((err) => res.status(400).json({ message: err.message }));
+            })
             .catch((err) => res.status(400).json({ message: err.message }));
     }
 
@@ -45,9 +53,20 @@ module.exports = function (userModel, jwt, cookieName, formValidator, blackListT
             .catch((err) => res.status(403).json({ message: err.message }));
     }
 
+    function profile(req, res, next) {
+        return Promise.all([userModel.findById({ _id: req.user.id }), carModel.find({ creator: req.user.id })])
+            .then(([user, cars]) => {
+                const { email, username, carsBought } = user;
+                const resObj = { email, username, carsBought, cars };
+                return res.status(200).json(resObj);
+            })
+            .catch((err) => res.status(400).json({ message: err.message }));
+    }
+
     return {
         register,
         login,
         logout,
+        profile,
     };
 };
