@@ -19,4 +19,7 @@ export class UserService {
     profile(): Observable<any> {
         return this.http.get('user/profile');
     }
+    userAddress(): Observable<any> {
+        return this.http.get('user/checkout');
+    }
 }

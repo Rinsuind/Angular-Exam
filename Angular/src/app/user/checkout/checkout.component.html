@@ -1,0 +1,36 @@
+<main>
+    <div class="content">
+        <div class="form">
+            <form [formGroup]="form" (ngSubmit)="submitHandler()">
+                <div class="shared">
+                    <label for="firstName">First Name</label>
+                    <input type="text" formControlName="firstName" />
+                </div>
+                <div class="shared">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" formControlName="lastName" />
+                </div>
+                <div class="share">
+                    <label for="street">Street</label>
+                    <input type="text" formArrayName="street" />
+                </div>
+                <div class="shared">
+                    <label for="zip">Zip Code</label>
+                    <input type="number" formControlName="zip" />
+                </div>
+                <div class="shared">
+                    <label for="city">City</label>
+                    <input type="text" formArrayName="city" />
+                </div>
+                <div class="shared">
+                    <label for="country">Country</label>
+                    <input type="text" formControlName="country" />
+                </div>
+            </form>
+        </div>
+        <div class="products"></div>
+        <div class="price"></div>
+    </div>
+
+    <button>Buy</button>
+</main>

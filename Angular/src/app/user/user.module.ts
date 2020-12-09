@@ -7,9 +7,10 @@ import { UserRouterModule } from './user-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { ProfileComponent } from './profile/profile.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
-    declarations: [RegisterComponent, LoginComponent, ProfileComponent],
+    declarations: [RegisterComponent, LoginComponent, ProfileComponent, CheckoutComponent],
     imports: [
         CommonModule,
         UserRouterModule,
