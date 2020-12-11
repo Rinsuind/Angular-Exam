@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { NotificationService } from 'src/app/shared/notification.service';
+import { UserService } from '../user.service';
 
 @Component({
     selector: 'app-checkout',
@@ -7,20 +9,43 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     styleUrls: ['./checkout.component.css'],
 })
 export class CheckoutComponent implements OnInit {
-    form: FormGroup;
+    cars: any[];
 
-    constructor(private fb: FormBuilder) {
-        this.form = fb.group({
-            firstName: ['', Validators.required],
-            lastName: ['', Validators.required],
-            street: ['', Validators.required],
-            zip: ['', Validators.required],
-            city: ['', Validators.required],
-            country: ['', Validators.required],
+    constructor(
+        private userService: UserService,
+        private router: Router,
+        private notify: NotificationService
+    ) {}
+
+    ngOnInit(): void {
+        this.userService.userCheckOut().subscribe({
+            next: (res) => {
+                this.cars = res.carsChecked;
+            },
+            error: (err) => {
+                console.log(err);
+            },
         });
     }
 
-    ngOnInit(): void {}
+    deleteItem(id: string) {
+        this.userService.delItem(id).subscribe({
+            next: (_) => {},
+            error: (err) => {
+                console.log(err);
+            },
+        });
 
-    submitHandler() {}
+        this.router.routeReuseStrategy.shouldReuseRoute = function () {
+            return false;
+        };
+        this.router.onSameUrlNavigation = 'reload';
+
+        this.router.navigate(['/user/checkout']);
+    }
+    buy() {
+        this.notify.updateNotifications(0);
+
+        this.router.navigate(['/car/main']);
+    }
 }

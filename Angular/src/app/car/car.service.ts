@@ -21,4 +21,7 @@ export class CarService {
     updateCar(id: string, data: any): Observable<any> {
         return this.http.patch(`car/edit/${id}`, data);
     }
+    updateUserCars(id: string) {
+        return this.http.get(`user/buy/${id}`);
+    }
 }

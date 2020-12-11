@@ -8,5 +8,4 @@ module.exports = {
     userModel: require('./User')(mongoose, bcrypt, rounds),
     blackListedTokenModel: require('./Token')(mongoose),
     carModel: require('./Car')(mongoose),
-    addressModel: require('./Address')(mongoose),
 };

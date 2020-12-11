@@ -9,6 +9,9 @@ module.exports = {
         router.route('/login').post(loginValidator, user.login);
         router.route('/logout').get(isAuth(), user.logout);
         router.route('/profile').get(isAuth(), user.profile);
+        router.route('/buy/:id').get(isAuth(), user.checkCar);
+        router.route('/checkout').get(isAuth(), user.checkOut);
+        router.route('/delete/item').delete(isAuth(), user.delItem);
 
         return router;
     },

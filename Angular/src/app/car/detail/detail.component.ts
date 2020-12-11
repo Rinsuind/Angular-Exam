@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NotificationService } from 'src/app/shared/notification.service';
 import { StorageService } from 'src/app/shared/storage.service';
 import { CarService } from '../car.service';
 
@@ -11,10 +12,12 @@ import { CarService } from '../car.service';
 export class DetailComponent implements OnInit {
     car: any;
     owner: boolean;
+    data: any;
     constructor(
         private storageService: StorageService,
         private carService: CarService,
-        private routes: ActivatedRoute
+        private routes: ActivatedRoute,
+        private notifyService: NotificationService
     ) {}
 
     ngOnInit(): void {
@@ -23,6 +26,20 @@ export class DetailComponent implements OnInit {
             next: (car) => {
                 this.owner = car.creator === this.storageService.getItem('id');
                 this.car = car;
+            },
+            error: (err) => {
+                console.log(err);
+            },
+        });
+    }
+
+    handler() {
+        const id = this.routes.snapshot.params.id;
+
+        this.carService.updateUserCars(id).subscribe({
+            next: (value) => {
+                this.data = value;
+                this.notifyService.updateNotifications(this.data.data);
             },
             error: (err) => {
                 console.log(err);

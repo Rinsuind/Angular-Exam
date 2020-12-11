@@ -1,3 +1,76 @@
 main {
     margin: 4em;
 }
+h1 {
+    text-align: center;
+}
+.price {
+    padding-top: 0;
+    margin-bottom: 1em;
+}
+.products {
+    text-align: center;
+    margin-top: 1.7em;
+}
+img,
+span,
+li,
+a {
+    display: inline-block;
+}
+li span,
+li a {
+    vertical-align: top;
+}
+li {
+    padding-bottom: 2em;
+}
+span {
+    font-size: 1.5em;
+    padding-left: 1.3em;
+    font-weight: bold;
+}
+a {
+    font-size: 1.7em;
+    margin-left: 0.8em;
+
+    color: green;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: capitalize;
+    border-radius: 1em;
+    transition: all 0.5s ease-in;
+}
+a:hover {
+    color: red;
+}
+
+img {
+    width: 5%;
+}
+
+h3 {
+    text-align: center;
+}
+.button {
+    text-align: center;
+}
+
+button {
+    width: 15%;
+    border: none;
+
+    padding: 0.7em;
+    cursor: pointer;
+    border-radius: 1em;
+    background-color: white;
+    color: black;
+    font-size: 1.1em;
+    transition: all 0.5s ease-in;
+    font-weight: bold;
+}
+button:hover {
+    background-color: rgb(21, 25, 29);
+    color: white;
+}

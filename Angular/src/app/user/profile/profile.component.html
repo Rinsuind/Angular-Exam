@@ -12,12 +12,12 @@
                 <p>Email:</p>
                 <p>Username:</p>
                 <p>Offers Bought:</p>
-                <p>Active Offers:</p>
+                <p>Own Offers:</p>
             </div>
             <div class="content" *ngIf="data">
                 <p>{{ data.email }}</p>
                 <p>{{ data.username }}</p>
-                <p>{{ data.carsBought.length }}</p>
+                <p>{{ data.carsBought }}</p>
                 <p>{{ data.cars.length }}</p>
             </div>
         </div>

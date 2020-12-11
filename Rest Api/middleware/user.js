@@ -56,10 +56,36 @@ module.exports = function (userModel, jwt, cookieName, formValidator, blackListT
     function profile(req, res, next) {
         return Promise.all([userModel.findById({ _id: req.user.id }), carModel.find({ creator: req.user.id })])
             .then(([user, cars]) => {
-                const { email, username, carsBought } = user;
-                const resObj = { email, username, carsBought, cars };
+                const { email, username, carsBought, carsChecked } = user;
+                const resObj = { email, username, carsBought, carsChecked, cars };
                 return res.status(200).json(resObj);
             })
+            .catch((err) => res.status(400).json({ message: err.message }));
+    }
+
+    function checkCar(req, res, next) {
+        return userModel
+            .updateOne({ _id: req.user.id }, { $push: { carsChecked: req.params.id } })
+            .then((_) => {
+                return userModel.findById({ _id: req.user.id }).then((user) => res.status(201).json({ data: user.carsChecked.length }));
+            })
+            .catch((err) => res.status(400).json({ message: err.message }));
+    }
+
+    function checkOut(req, res, next) {
+        return userModel
+            .findById({ _id: req.user.id })
+            .populate('carsChecked')
+            .then((result) => res.status(200).json(result))
+            .catch((err) => res.status(400).json({ message: err.message }));
+    }
+
+    function delItem(req, res, next) {
+        const { _id } = req.body;
+
+        return userModel
+            .updateOne({ _id: req.user.id }, { $pull: { carsChecked: _id } })
+            .then((_) => res.status(200).json({ message: 'Deleted!' }))
             .catch((err) => res.status(400).json({ message: err.message }));
     }
 
@@ -68,5 +94,8 @@ module.exports = function (userModel, jwt, cookieName, formValidator, blackListT
         login,
         logout,
         profile,
+        checkCar,
+        checkOut,
+        delItem,
     };
 };

@@ -1,5 +1,6 @@
 <main>
-    <ng-container *ngIf="cars; then isNotEmpty; else isEmpty"> </ng-container>
+    <ng-container *ngIf="cars.length; then isNotEmpty; else isEmpty">
+    </ng-container>
 </main>
 
 <ng-template #isEmpty>

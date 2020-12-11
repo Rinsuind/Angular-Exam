@@ -14,16 +14,16 @@ module.exports = function (mongoose, bcrypt, rounds) {
                 type: String,
                 required: true,
             },
-            userAddress: {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'address',
-            },
-            carsBought: [
+            carsChecked: [
                 {
                     type: mongoose.Schema.Types.ObjectId,
                     ref: 'car',
                 },
             ],
+            carsBought: {
+                type: Number,
+                default: 0,
+            },
         },
         { timestamps: { createdAt: 'created_at' } }
     );
