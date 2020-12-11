@@ -30,4 +30,5 @@ export class UserService {
             body: { _id: id },
         });
     }
+    some() {}
 }
