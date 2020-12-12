@@ -12,6 +12,7 @@ import { UserService } from '../user.service';
 })
 export class RegisterComponent implements OnInit {
     form: FormGroup;
+    error: string;
 
     constructor(
         private fb: FormBuilder,
@@ -45,7 +46,9 @@ export class RegisterComponent implements OnInit {
             next: () => {
                 this.router.navigate(['/user/login']);
             },
-            error: (err) => console.log(err.error.message),
+            error: (err) => {
+                this.error = err.error.message;
+            },
         });
     }
 }

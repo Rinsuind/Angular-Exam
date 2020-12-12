@@ -1,1 +1,24 @@
-<p>my-offers works!</p>
+<main>
+    <ng-container *ngIf="cars.length; then isNot; else emptyArray">
+    </ng-container>
+</main>
+
+<ng-template #emptyArray>
+    <h2>Hello</h2>
+</ng-template>
+<ng-template #isNot>
+    <ng-container> </ng-container>
+    <ul class="gallery">
+        <li *ngFor="let car of cars">
+            <h5>{{ car.brand }} - {{ car.model }}</h5>
+            <span class="media">
+                <img src="{{ car.imageUrl }}" />
+            </span>
+
+            <div class="buttons">
+                <a [routerLink]="['/car/detail/', car._id]">Details</a>
+                <a [routerLink]="['/car/edit/', car._id]">Edit</a>
+            </div>
+        </li>
+    </ul>
+</ng-template>

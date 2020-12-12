@@ -27,7 +27,7 @@ const routes: Routes = [
                 component: DetailComponent,
             },
             {
-                path: 'own/offers',
+                path: 'users/offers',
                 component: MyOffersComponent,
             },
             {

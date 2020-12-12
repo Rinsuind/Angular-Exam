@@ -7,12 +7,16 @@
 </ng-template>
 
 <ng-template #isNot>
+    <h1>Sign Up Now and find the best car for you</h1>
+    <h2>Our Best Offers</h2>
     <ul class="gallery">
         <li *ngFor="let car of cars">
-            <h6>{{ car.brand }} - {{ car.model }}</h6>
+            <h5>{{ car.brand }} - {{ car.model }}</h5>
             <span class="media">
                 <img src="{{ car.imageUrl }}" />
             </span>
+            <p *ngIf="car.likes.length !== 1">{{ car.likes.length }} likes</p>
+            <p *ngIf="car.likes.length === 1">{{ car.likes.length }} like</p>
         </li>
     </ul>
 </ng-template>

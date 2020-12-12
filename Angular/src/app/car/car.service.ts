@@ -33,4 +33,7 @@ export class CarService {
     dislikeCar(data: any): Observable<any> {
         return this.http.patch('car/dislike', data);
     }
+    usersCars(): Observable<any> {
+        return this.http.get('car/my-offers');
+    }
 }

@@ -1,15 +1,24 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CarService } from '../car.service';
 
 @Component({
-  selector: 'app-my-offers',
-  templateUrl: './my-offers.component.html',
-  styleUrls: ['./my-offers.component.css']
+    selector: 'app-my-offers',
+    templateUrl: './my-offers.component.html',
+    styleUrls: ['./my-offers.component.css'],
 })
 export class MyOffersComponent implements OnInit {
+    cars: any[];
+    constructor(private carService: CarService, private router: Router) {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+    ngOnInit(): void {
+        this.carService.usersCars().subscribe({
+            next: (res) => {
+                this.cars = res;
+            },
+            error: (err) => {
+                console.log(err);
+            },
+        });
+    }
 }

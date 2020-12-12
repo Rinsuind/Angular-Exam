@@ -12,6 +12,7 @@ module.exports = {
         router.route('/delete/:id').delete(isAuth(), car.deleteCar);
         router.route('/like').patch(isAuth(), car.likeCar);
         router.route('/dislike').patch(isAuth(), car.dislikeCar);
+        router.route('/my-offers').get(isAuth(), car.userOffers);
 
         return router;
     },

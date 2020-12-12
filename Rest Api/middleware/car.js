@@ -62,5 +62,13 @@ module.exports = function (carModel, formValidator) {
             .then((_) => res.status(200).json({ message: 'Updated' }))
             .catch((err) => res.status(400).json({ message: err.message }));
     }
-    return { createCar, getAllCars, getCarDetails, updateCar, deleteCar, likeCar, dislikeCar };
+
+    function userOffers(req, res, next) {
+        return carModel
+            .find({ creator: req.user.id })
+            .then((cars) => res.status(200).json(cars))
+            .catch((err) => res.status(400).json({ message: err.message }));
+    }
+
+    return { createCar, getAllCars, getCarDetails, updateCar, deleteCar, likeCar, dislikeCar, userOffers };
 };

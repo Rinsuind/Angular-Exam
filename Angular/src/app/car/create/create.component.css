@@ -69,3 +69,15 @@ p {
     margin-bottom: 1.2em;
     text-align: center;
 }
+
+.error {
+    display: flex;
+
+    justify-content: center;
+}
+span {
+    display: block;
+    padding: 0.5em 2em;
+    border: 2px solid red;
+    border-radius: 2px;
+}

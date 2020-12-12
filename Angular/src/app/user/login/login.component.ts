@@ -12,6 +12,7 @@ import { UserService } from '../user.service';
 })
 export class LoginComponent implements OnInit {
     form: FormGroup;
+    error: string;
 
     constructor(
         private fb: FormBuilder,
@@ -37,7 +38,9 @@ export class LoginComponent implements OnInit {
                 this.storage.setItem('username', username);
                 this.router.navigate(['/']);
             },
-            error: (err) => console.log(err),
+            error: (err) => {
+                this.error = err.error.message;
+            },
         });
     }
 }

@@ -10,6 +10,7 @@ import { CarService } from '../car.service';
 })
 export class CreateComponent implements OnInit {
     form: FormGroup;
+    error: string;
     constructor(
         private router: Router,
         private fb: FormBuilder,
@@ -37,7 +38,9 @@ export class CreateComponent implements OnInit {
             next: () => {
                 this.router.navigate(['/car/main']);
             },
-            error: (err) => console.log(err),
+            error: (err) => {
+                this.error = err.error.message;
+            },
         });
     }
 }
