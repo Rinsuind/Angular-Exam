@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NotificationService } from 'src/app/shared/notification.service';
 import { StorageService } from 'src/app/shared/storage.service';
 import { CarService } from '../car.service';
@@ -17,7 +17,8 @@ export class DetailComponent implements OnInit {
         private storageService: StorageService,
         private carService: CarService,
         private routes: ActivatedRoute,
-        private notifyService: NotificationService
+        private notifyService: NotificationService,
+        private router: Router
     ) {}
 
     ngOnInit(): void {
@@ -45,5 +46,14 @@ export class DetailComponent implements OnInit {
                 console.log(err);
             },
         });
+    }
+    deleteCar() {
+        this.carService.deleteCar(this.routes.snapshot.params.id).subscribe({
+            next: (_) => {},
+            error: (err) => {
+                console.log(err);
+            },
+        });
+        this.router.navigate(['/car/main']);
     }
 }

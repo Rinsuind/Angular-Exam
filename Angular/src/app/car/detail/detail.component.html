@@ -42,7 +42,7 @@
 
 <ng-template #isOwner>
     <a [routerLink]="['/car/edit', car._id]">Edit</a>
-    <a>Delete</a>
+    <a (click)="deleteCar()">Delete</a>
 </ng-template>
 <ng-template #isNot>
     <a (click)="handler()">Buy</a>

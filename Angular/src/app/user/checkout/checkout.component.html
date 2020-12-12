@@ -1,4 +1,10 @@
 <main>
+    <ng-container *ngIf="!isEmpty; then isFalse; else isNot"> </ng-container>
+</main>
+
+<ng-template #isFalse> <h1>Haha</h1> </ng-template>
+
+<ng-template #isNot>
     <div class="products">
         <ul>
             <li *ngFor="let car of cars">
@@ -16,6 +22,6 @@
         <h1 class="price">Price: {{ cars | price }}$</h1>
     </div>
     <div class="button">
-        <button (click)="buy()">Byu</button>
+        <button (click)="buy()">Buy</button>
     </div>
-</main>
+</ng-template>

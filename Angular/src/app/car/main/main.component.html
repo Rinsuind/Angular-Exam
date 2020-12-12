@@ -14,13 +14,18 @@
                 <img src="{{ car.imageUrl }}" alt="" />
             </span>
             <div class="buttons">
-                <a href=""
-                    ><i class="fas fa-thumbs-up"></i> <span>0 likes</span></a
+                <a *ngIf="!car.likes.includes(userId)"
+                    ><i class="fas fa-thumbs-up" (click)="like(car._id)"></i>
+                    <span>{{ car.likes.length }} likes</span></a
                 >
-                <a href=""
-                    ><i class="fas fa-thumbs-down"></i>
-                    <span>0 dislikes</span></a
+                <a *ngIf="car.likes.includes(userId)"
+                    ><i
+                        (click)="dislike(car._id)"
+                        class="fas fa-thumbs-down"
+                    ></i>
+                    <span>{{ car.likes.length }} likes</span></a
                 >
+
                 <a class="details" [routerLink]="['/car/detail', car._id]"
                     >Details</a
                 >

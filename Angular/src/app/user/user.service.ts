@@ -30,5 +30,7 @@ export class UserService {
             body: { _id: id },
         });
     }
-    some() {}
+    finish(data: any): Observable<any> {
+        return this.http.post('user/buy', data);
+    }
 }

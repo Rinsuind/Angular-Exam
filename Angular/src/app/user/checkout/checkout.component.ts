@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NotificationService } from 'src/app/shared/notification.service';
 import { UserService } from '../user.service';
 
 @Component({
@@ -9,18 +8,16 @@ import { UserService } from '../user.service';
     styleUrls: ['./checkout.component.css'],
 })
 export class CheckoutComponent implements OnInit {
-    cars: any[];
+    public cars: any[];
+    public isEmpty: boolean;
 
-    constructor(
-        private userService: UserService,
-        private router: Router,
-        private notify: NotificationService
-    ) {}
+    constructor(private userService: UserService, private router: Router) {}
 
     ngOnInit(): void {
         this.userService.userCheckOut().subscribe({
             next: (res) => {
                 this.cars = res.carsChecked;
+                this.isEmpty = !!this.cars.length;
             },
             error: (err) => {
                 console.log(err);
@@ -30,7 +27,6 @@ export class CheckoutComponent implements OnInit {
 
     deleteItem(id: string) {
         this.userService.delItem(id).subscribe({
-            next: (_) => {},
             error: (err) => {
                 console.log(err);
             },
@@ -44,8 +40,16 @@ export class CheckoutComponent implements OnInit {
         this.router.navigate(['/user/checkout']);
     }
     buy() {
-        this.notify.updateNotifications(0);
-
+        const data = this.cars.reduce((a, b) => {
+            a.push(b._id);
+            return a;
+        }, []);
+        this.userService.finish(data).subscribe({
+            next: (_) => {},
+            error: (err) => {
+                console.log(err);
+            },
+        });
         this.router.navigate(['/car/main']);
     }
 }

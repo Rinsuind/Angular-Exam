@@ -9,6 +9,9 @@ module.exports = {
         router.route('/main').get(isAuth(), car.getAllCars);
         router.route('/detail/:id').get(isAuth(), car.getCarDetails);
         router.route('/edit/:id').patch(isAuth(), carValidator, car.updateCar);
+        router.route('/delete/:id').delete(isAuth(), car.deleteCar);
+        router.route('/like').patch(isAuth(), car.likeCar);
+        router.route('/dislike').patch(isAuth(), car.dislikeCar);
 
         return router;
     },

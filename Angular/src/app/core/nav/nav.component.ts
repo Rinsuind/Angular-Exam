@@ -13,9 +13,10 @@ import { UserService } from 'src/app/user/user.service';
 export class NavComponent implements OnInit {
     user: string;
     value: number;
-    notify$: Observable<number>;
+    private interval;
+    public notify$: Observable<number>;
     constructor(
-        public storage: StorageService,
+        private storage: StorageService,
         private router: Router,
         private userService: UserService,
         public notifyService: NotificationService
@@ -30,23 +31,51 @@ export class NavComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.userService.profile().subscribe({
-            next: (user) => {
-                this.notifyService.updateNotifications(user.carsChecked.length);
-                this.notify$ = this.notifyService.notification$;
-                this.notify$.subscribe({
-                    next: (value) => {
-                        this.value = value;
+        //if (this.token) {
+        //    setInterval(() => {
+        //        this.userService.profile().subscribe({
+        //            next: (user) => {
+        //                this.notifyService.updateNotifications(
+        //                    user.carsChecked.length
+        //                );
+        //                this.notify$ = this.notifyService.notification$;
+        //                this.notify$.subscribe({
+        //                    next: (value) => {
+        //                        this.value = value;
+        //                    },
+        //                });
+        //            },
+        //            error: (err) => {
+        //                console.log(err);
+        //            },
+        //        });
+        //    }, 1000);
+        //}
+
+        if (this.token) {
+            this.interval = setInterval(() => {
+                this.userService.profile().subscribe({
+                    next: (user) => {
+                        this.notifyService.updateNotifications(
+                            user.carsChecked.length
+                        );
+                        this.notify$ = this.notifyService.notification$;
+                        this.notify$.subscribe({
+                            next: (value) => {
+                                this.value = value;
+                            },
+                        });
+                    },
+                    error: (err) => {
+                        console.log(err);
                     },
                 });
-            },
-            error: (err) => {
-                console.log(err);
-            },
-        });
+            }, 1000);
+        }
     }
 
     logout() {
+        clearInterval(this.interval);
         this.userService.logout().subscribe({
             next: (_) => {
                 this.storage.delItem('username');

@@ -24,4 +24,13 @@ export class CarService {
     updateUserCars(id: string) {
         return this.http.get(`user/buy/${id}`);
     }
+    deleteCar(id: string): Observable<any> {
+        return this.http.delete(`car/delete/${id}`);
+    }
+    likeCar(data: any): Observable<any> {
+        return this.http.patch('car/like', data);
+    }
+    dislikeCar(data: any): Observable<any> {
+        return this.http.patch('car/dislike', data);
+    }
 }

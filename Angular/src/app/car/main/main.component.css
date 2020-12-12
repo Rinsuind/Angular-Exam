@@ -51,11 +51,15 @@ h5 {
     text-align: center;
     font-weight: bold;
 }
-.buttons {
+/*.buttons {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     margin-bottom: 1em;
+}
+*/
+.buttons {
+    display: block;
 }
 
 a {
@@ -64,6 +68,9 @@ a {
     margin-left: 0.5em;
     font-size: 1.5em;
 }
+i {
+    cursor: pointer;
+}
 i:hover {
     color: blue;
 }
@@ -71,9 +78,11 @@ span {
     margin-left: 0.5em;
 }
 .details {
+    margin-left: 4em;
     margin-top: 1em;
     font-size: 1.5em;
     display: block;
+    width: 37%;
     padding: 0.3em 0.6em;
     background-color: rgb(21, 25, 29);
     color: white;

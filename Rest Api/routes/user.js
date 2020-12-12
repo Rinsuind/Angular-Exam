@@ -12,6 +12,7 @@ module.exports = {
         router.route('/buy/:id').get(isAuth(), user.checkCar);
         router.route('/checkout').get(isAuth(), user.checkOut);
         router.route('/delete/item').delete(isAuth(), user.delItem);
+        router.route('/buy').post(isAuth(), user.buyCars);
 
         return router;
     },

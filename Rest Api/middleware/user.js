@@ -89,6 +89,13 @@ module.exports = function (userModel, jwt, cookieName, formValidator, blackListT
             .catch((err) => res.status(400).json({ message: err.message }));
     }
 
+    function buyCars(req, res, next) {
+        return userModel
+            .updateOne({ _id: req.user.id }, { $inc: { carsBought: req.body.length }, $set: { carsChecked: [] } })
+            .then((_) => res.status(200).json({ message: 'Updated' }))
+            .catch((err) => res.status(400).json({ message: err.message }));
+    }
+
     return {
         register,
         login,
@@ -97,5 +104,6 @@ module.exports = function (userModel, jwt, cookieName, formValidator, blackListT
         checkCar,
         checkOut,
         delItem,
+        buyCars,
     };
 };
