@@ -31,27 +31,6 @@ export class NavComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        //if (this.token) {
-        //    setInterval(() => {
-        //        this.userService.profile().subscribe({
-        //            next: (user) => {
-        //                this.notifyService.updateNotifications(
-        //                    user.carsChecked.length
-        //                );
-        //                this.notify$ = this.notifyService.notification$;
-        //                this.notify$.subscribe({
-        //                    next: (value) => {
-        //                        this.value = value;
-        //                    },
-        //                });
-        //            },
-        //            error: (err) => {
-        //                console.log(err);
-        //            },
-        //        });
-        //    }, 1000);
-        //}
-
         if (this.token) {
             this.interval = setInterval(() => {
                 this.userService.profile().subscribe({

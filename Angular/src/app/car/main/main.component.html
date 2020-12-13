@@ -8,7 +8,7 @@
 </ng-template>
 <ng-template #isNotEmpty>
     <ul class="gallery">
-        <li *ngFor="let car of cars">
+        <li @fade *ngFor="let car of cars">
             <h5>{{ car.brand }} - {{ car.model }}</h5>
             <span class="media">
                 <img src="{{ car.imageUrl }}" alt="" />

@@ -4,12 +4,12 @@
 </main>
 
 <ng-template #emptyArray>
-    <h2>Hello</h2>
+    <h2>Create your first offer</h2>
 </ng-template>
 <ng-template #isNot>
     <ng-container> </ng-container>
     <ul class="gallery">
-        <li *ngFor="let car of cars">
+        <li @fade *ngFor="let car of cars">
             <h5>{{ car.brand }} - {{ car.model }}</h5>
             <span class="media">
                 <img src="{{ car.imageUrl }}" />
